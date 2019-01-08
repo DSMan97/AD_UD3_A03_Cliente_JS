@@ -34,7 +34,7 @@ function borraHijos(elemento){
 
 }
 
-function cambiaDos(){
+function mostrarPersonaje(){
 
 	var capa = document.getElementById("principal");
 
@@ -65,29 +65,29 @@ function pintaTabla(respuesta){
 	if(respuestaJSON["estado"] == "ok"){
 		console.log("VAMOS BIEN");
 
-		var arrJugadores =  respuestaJSON["jugadores"];
+		var arrPersonajes =  respuestaJSON["personajes"];
 
-		for(var i = 0; i < arrJugadores.length; i++){
+		for(var i = 0; i < arrPersonajes.length; i++){
 
 			var fila = document.createElement("div");
-			fila.setAttribute("id","jugador_"+ arrJugadores[i].id );
+			fila.setAttribute("id","jugador_"+ arrPersonajes[i].id );
 			fila.setAttribute("class","jugador");
 			fila.setAttribute("onclick","prueba(this)");
 
 			var nombre = document.createElement("h2");
-			var texto = document.createTextNode(arrJugadores[i].nombre);
+			var texto = document.createTextNode(arrPersonajes[i].nombre);
 			nombre.appendChild(texto);
-			nombre.setAttribute("id","nombrejugador_"+ arrJugadores[i].id );
+			nombre.setAttribute("id","nombrejugador_"+ arrPersonajes[i].id );
 
 			var numero = document.createElement("h2");
-			var textonum = document.createTextNode(arrJugadores[i].numero);
+			var textonum = document.createTextNode(arrPersonajes[i].numero);
 			numero.appendChild(textonum);
-			numero.setAttribute("id","numerojugador_"+ arrJugadores[i].id );
+			numero.setAttribute("id","numerojugador_"+ arrPersonajes[i].id );
 
 			var equipo = document.createElement("h2");
-			var textoequipo = document.createTextNode(arrJugadores[i].equipo);
+			var textoequipo = document.createTextNode(arrPersonajes[i].equipo);
 			equipo.appendChild(textoequipo);
-			equipo.setAttribute("id","equipojugador_"+ arrJugadores[i].id );
+			equipo.setAttribute("id","equipojugador_"+ arrPersonajes[i].id );
 
 			fila.appendChild(nombre);
 			fila.appendChild(numero);

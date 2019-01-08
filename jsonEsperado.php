@@ -3,17 +3,18 @@
 /*  Formato JSON esperado */
 
 $arrEsperado = array();
-$arrJugadorEsperado = array();
+$arrPersonajeEsperado = array();
 
 $arrEsperado["peticion"] = "add";
 $arrEsperado["peticion"] = "del";
 
-$arrJugadorEsperado["nombre"] = "Lorenzo (Un string)";
-$arrJugadorEsperado["equipo"] = "2 (Un int)";
-$arrJugadorEsperado["numero"] = "2 (Un int)";
+$arrPersonajeEsperado["nombre"] = "Lorenzo (Un string)";
+$arrPersonajeEsperado["equipo"] = "2 (Un int)";
+$arrPersonajeEsperado["numero"] = "2 (Un int)";
 
-$arrEsperado["jugadorAnnadir"] = $arrJugadorEsperado;
-$arrEsperado["jugadorBorrar"] = $arrJugadorEsperado;
+
+$arrEsperado["jugadorAnnadir"] = $arrPersonajeEsperado;
+$arrEsperado["jugadorBorrar"] = $arrPersonajeEsperado;
 
 
 /* Funcion para comprobar si el recibido es igual al esperado */
@@ -53,3 +54,4 @@ function JSONCorrectoBorrar($recibido){
 	return $auxCorrecto;
 
 }
+?>

@@ -5,10 +5,10 @@
 $servername = "localhost";
 $user = "root";
 $password = "";
-$dbname = "json_baloncesto";
+$dbname = "videojuegos";
 $conn  =  new  mysqli($servername,  $user,$password, $dbname);
 // Check connection
 if ($conn->connect_error) {
 	die("Error: " . $conn->connect_error);
 }
-
+?>

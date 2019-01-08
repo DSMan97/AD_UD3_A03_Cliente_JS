@@ -11,53 +11,53 @@ $arrMensaje = array();  // Este array es el codificaremos como JSON tanto si hay
 
 
 
-$query = "SELECT * FROM player"; 
+$query = "SELECT * FROM personajes";
 
 $result = $conn->query ( $query );
 
 if (isset ( $result ) && $result) { // Si pasa por este if, la query está está bien y se obtiene resultado
-	
+
 	if ($result->num_rows > 0) { // Aunque la query esté bien puede no obtenerse resultado (tabla vacía). Comprobamos antes de recorrer
-		
-		$arrJugadores = array();	// Array numérico
-		
+
+		$arrPersonajes = array();	// Array numérico
+
 		while ( $row = $result->fetch_assoc () ) {
-			
+
 			// Por cada vuelta del bucle creamos un jugador. Como es un objeto hacemos un array asociativo
-			$arrJugador = array(); // Asociativo
+			$arrPersonaje = array(); // Asociativo
 			// Por cada columna de la tabla creamos una propiedad para el objeto
-			$arrJugador["nombre"] = $row["playerName"];
-			$arrJugador["id"] = $row["playerId"];
-			$arrJugador["equipo"] = $row["idTeamFK"];
-			$arrJugador["numero"] = $row["playerNumber"];
+			$arrPersonaje["nombre"] = $row["Nombre_Personaje"];
+			$arrPersonaje["id"] = $row["ID"];
+			$arrPersonaje["id_juego"] = $row["ID_Juego"];
+
 			// Por último, añadimos el nuevo jugador al array de jugadores
-			$arrJugadores[] = $arrJugador;
-			
+			$arrPersonajes[] = $arrPersonaje;
+
 		}
-		
+
 		// Añadimos al $arrMensaje el array de jugadores y añadimos un campo para indicar que todo ha ido OK
 		$arrMensaje["estado"] = "ok";
-		$arrMensaje["jugadores"] = $arrJugadores;
-		
-		
+		$arrMensaje["personajes"] = $arrPersonajes;
+
+
 	} else {
-		
+
 		$arrMensaje["estado"] = "ok";
-		$arrMensaje["jugadores"] = []; // Array vacío si no hay resultados
+		$arrMensaje["personajes"] = []; // Array vacío si no hay resultados
 	}
 	
 } else {
-	
+
 	$arrMensaje["estado"] = "error";
 	$arrMensaje["mensaje"] = "SE HA PRODUCIDO UN ERROR AL ACCEDER A LA BASE DE DATOS";
 	$arrMensaje["error"] = $conn->error;
 	$arrMensaje["query"] = $query;
-	
+
 }
 
 $mensajeJSON = json_encode($arrMensaje,JSON_PRETTY_PRINT);
 
-//echo "<pre>";  // Descomentar si se quiere ver resultado "bonito" en navegador. Solo para pruebas 
+//echo "<pre>";  // Descomentar si se quiere ver resultado "bonito" en navegador. Solo para pruebas
 echo $mensajeJSON;
 //echo "</pre>"; // Descomentar si se quiere ver resultado "bonito" en navegador
 
