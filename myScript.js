@@ -46,7 +46,7 @@ function cambiaDos(){
 		}
 	};
 
-	xhttp.open("GET", "http://localhost/basket/leeJugadores.php", true);
+	xhttp.open("GET", "http://localhost/AD_UD3_A03_Cliente_JS/leeJugadores.php", true);
 	xhttp.send();
 
 
@@ -144,7 +144,7 @@ function insertarColega(){
 	console.log(peticionJSON);
 
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-	xmlhttp.open("POST", "http://localhost/basket/escribirJugador.php");
+	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/escribirJugador.php");
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
 
 	xmlhttp.onreadystatechange = function() {
@@ -198,7 +198,7 @@ function borrarColega(){
 	console.log(peticionJSON);
 
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-	xmlhttp.open("POST", "http://localhost/basket/borrarJugador.php");
+	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/borrarJugador.php");
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
 
 	xmlhttp.onreadystatechange = function() {
