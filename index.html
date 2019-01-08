@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script src="myScript.js"></script>
+<link rel="stylesheet" type="text/css" href="estilos.css">
+<meta charset="utf-8"/>
+</head>
+<body onload="cambiaDos()">
+
+<h1>CLIENTE JSON BALONCESTO</h1>
+<div id="principal"><h2>This is a heading inside a division</h2></div>
+
+
+<div id="formTodo">
+	<label for="nombreColega">NOMBRE:</label>
+	<input type="text" id="nombreColega" name="nombreColega" value="lorenzo"/>
+	<label for="numeroColega">NUMERO:</label>
+	<input type="text" id="numeroColega" name="numeroColega" value="7"/>
+	<label for="equipoColega">EQUIPO:</label>
+	<input type="text" id="equipoColega" name="equipoColega" value="1"/>
+	<button onclick="insertarColega()" id="btnInsert" enable> AÑADIR </button>
+	<button onclick="borrarColega()" id="btnDelete" enable> Borrar </button>
+
+</div>
+
+
+</body>
+</html>
