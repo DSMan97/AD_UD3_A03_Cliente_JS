@@ -1,29 +1,57 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<title>Page Title</title>
-<script src="myScript.js"></script>
-<link rel="stylesheet" type="text/css" href="estilos.css">
-<meta charset="utf-8"/>
-</head>
-<body onload="cambiaDos()">
+ <head>
+  <title> New Document </title>
+  <script src="nuestroScript.js"></script>
 
-<h1>CLIENTE JSON BALONCESTO</h1>
-<div id="principal"><h2>This is a heading inside a division</h2></div>
+ </head>
+
+ <body>
+<label for="titulo">Cliente Javascript</label><br><br><br><br>
 
 
-<div id="formTodo">
-	<label for="nombreColega">NOMBRE:</label>
-	<input type="text" id="nombreColega" name="nombreColega" value="lorenzo"/>
-	<label for="numeroColega">NUMERO:</label>
-	<input type="text" id="numeroColega" name="numeroColega" value="7"/>
-	<label for="equipoColega">EQUIPO:</label>
-	<input type="text" id="equipoColega" name="equipoColega" value="1"/>
-	<button onclick="insertarColega()" id="btnInsert" enable> AÑADIR </button>
-	<button onclick="borrarColega()" id="btnDelete" enable> Borrar </button>
+<label for="nombreColega">Tabla VideoJuegos</label><br><br>
 
-</div>
+<label for="nombreColega">Id:</label>
+<input type="text" id="idVideojuego" name="idV" value=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<label for="nombreColega">Nombre:</label>
+<input type="text" id="nombreVideojuego" name="nombreV" value=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<label for="nombreColega">Fecha Lanzamiento:</label>
+<input type="text" id="fechaVideojuego" name="fechaV" value=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<label for="nombreColega">Desarrollador:</label>
+<input type="text" id="desarrolloVideojuego" name="desarrolladorV" value=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<label for="nombreColega">Plataforma:</label>
+<input type="text" id="plataformaVideojuego" name="plataformaV" value=""/>&nbsp;&nbsp;&nbsp;<br><br>&nbsp;&nbsp;
+
+<button id="boton1" onclick="mostrarVideojuego()"> MOSTRAR </button>&nbsp;&nbsp
+<button id="boton2" onclick="insertarVideojuego()"> AÑADIR </button>&nbsp;&nbsp;
+<button id="boton3" onclick="borrarVideojuego()"> BORRAR </button>&nbsp;&nbsp;
+<button id="boton4" onclick="modificarVideojuego()"> MODIFICAR </button><br>
 
 
-</body>
+
+<br><br><br>
+
+<label for="nombreColega">Tabla Personajes</label><br><br>
+
+
+<label for="nombreColega">Id:</label>
+<input type="text" id="idPersonaje" name="idP" value=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<label for="nombreColega">Nombre del Personaje:</label>
+<input type="text" id="nombrePersonaje" name="nombreP" value=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<label for="nombreColega">ID del Videojuego:</label>
+<input type="text" id="comparacionPersonaje" name="comP" value=""/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>&nbsp;&nbsp;
+
+<button id="boton1" onclick="mostrarPersonaje()"> MOSTRAR </button>&nbsp;&nbsp
+<button id="boton2" onclick="insertarPersonaje()"> AÑADIR </button>&nbsp;&nbsp;
+<button id="boton3" onclick="borrarPersonaje()"> BORRAR </button>&nbsp;&nbsp;
+<button id="boton4" onclick="modificarPersonaje()"> MODIFICAR </button><br>
+
+ </body>
 </html>
