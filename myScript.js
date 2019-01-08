@@ -1,3 +1,4 @@
+<!-- TODO: Prepara e ir cambiando las funciones de este archivo por las usadas en el index.html. -->
 function cambia(){
 
 	var capa = document.getElementById("principal");
