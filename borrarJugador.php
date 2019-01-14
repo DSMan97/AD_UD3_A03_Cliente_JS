@@ -26,18 +26,18 @@ if(isset($parameters)){
 
 		$personaje = $mensajeRecibido["personajeBorrar"];
 
-		$nombre = $jugador["nombre"];
-		$equipo = $jugador["equipo"];
-		$numero = $jugador["numero"];
+		$id = $personaje["ID"];
+		$nombreP = $personaje["Nombre_Personaje"];
+		$idGame = $personaje["id_juego"];
 
-		$query  = "DELETE FROM player WHERE playerName=$nombre AND playerNumber=$numero AND idTeamFK=$equipo";
+		$query  = "DELETE FROM personajes WHERE ID=$id AND Nombre_Personaje=$nombreP AND ID_Juego=$idGame";
 
 		$result = $conn->query ( $query );
 
 		if (isset ( $result ) && $result) { // Si pasa por este if, la query está está bien y se ha insertado correctamente
 
 			$arrMensaje["estado"] = "ok";
-			$arrMensaje["mensaje"] = "Jugador borrado correctamente";
+			$arrMensaje["mensaje"] = "Personaje borrado correctamente";
 			$lastId = $conn->insert_id;
 			$arrMensaje["lastId"] = $lastId;
 

@@ -22,7 +22,7 @@ if(isset($parameters)){
 	$mensajeRecibido = json_decode($parameters, true);
 	// Comprobamos que están todos los datos en el json que hemos recibido
 	// Funcion declarada en jsonEsperado.php
-	if(JSONCorrectoAnnadir($mensajeRecibido)){
+	if(JSON2CorrectoAnnadir($mensajeRecibido)){
 
 		$videojuego = $mensajeRecibido["videojuegoAnnadir"];
 
