@@ -24,33 +24,36 @@ if(isset($parameters)){
 	// Funcion declarada en jsonEsperado.php
 	if(JSONCorrectoAnnadir($mensajeRecibido)){
 
-		$equipo = $mensajeRecibido["equipoAnnadir"]; 
-		
-		$nombreEq = $equipo["equipo"];
-		$numero = $equipo["numero"];
-		
-		$query  = "INSERT INTO  team (idTeam,Name) ";
-		$query .= "VALUES ('$numero','$nombreEq')";
-		
+		$videojuego = $mensajeRecibido["videojuegoAnnadir"];
+
+		$id = $videojuego["ID"];
+		$nombre = $videojuego["Nombre"];
+		$lanzamiento = $videojuego["Fecha_Lanzamiento"];
+		$desarrollo = $videojuego["Desarrollador"];
+		$plataforma = $videojuego["Plataforma"];
+
+		$query  = "INSERT INTO  videojuegos (ID,Nombre,Fecha_Lanzamiento,Desarrollador,Plataforma) ";
+		$query .= "VALUES ('$id','$nombre','$lanzamiento','$desarrollo','$plataforma')";
+
 		$result = $conn->query ( $query );
-		
+
 		if (isset ( $result ) && $result) { // Si pasa por este if, la query está está bien y se ha insertado correctamente
-			
+
 			$arrMensaje["estado"] = "ok";
 			$arrMensaje["mensaje"] = "Equipo insertado correctamente";
-			
+
 		}else{ // Se ha producido algún error al ejecutar la query
-			
+
 			$arrMensaje["estado"] = "error";
 			$arrMensaje["mensaje"] = "SE HA PRODUCIDO UN ERROR AL ACCEDER A LA BASE DE DATOS";
 			$arrMensaje["error"] = $conn->error;
 			$arrMensaje["query"] = $query;
-			
+
 		}
 
-		
+
 	}else{ // Nos ha llegado un json no tiene los campos necesarios
-		
+
 		$arrMensaje["estado"] = "error";
 		$arrMensaje["mensaje"] = "EL JSON NO CONTIENE LOS CAMPOS ESPERADOS";
 		$arrMensaje["recibido"] = $mensajeRecibido;
@@ -58,10 +61,10 @@ if(isset($parameters)){
 	}
 
 }else{	// No nos han enviado el json correctamente
-	
+
 	$arrMensaje["estado"] = "error";
 	$arrMensaje["mensaje"] = "EL JSON NO SE HA ENVIADO CORRECTAMENTE";
-	
+
 }
 
 $mensajeJSON = json_encode($arrMensaje,JSON_PRETTY_PRINT);

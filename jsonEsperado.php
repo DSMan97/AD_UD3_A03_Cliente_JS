@@ -13,7 +13,7 @@ $arrPersonajeEsperado["nombre"] = "Lorenzo (Un string)";
 $arrPersonajeEsperado["id"] = "2 (Un int)";
 $arrPersonajeEsperado["id_juego"] = "2 (Un int)";
 
-$arrVideojuegoEsperado["ID"]="7";
+$arrVideojuegoEsperado["ID"]="2";
 $arrVideojuegoEsperado["Nombre"]="Monster Hunter:World";
 $arrVideojuegoEsperado["Fecha_Lanzamiento"]="26/1/2018";
 $arrVideojuegoEsperado["Desarrollador"]="Capcom";
