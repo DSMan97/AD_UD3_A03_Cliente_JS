@@ -26,9 +26,9 @@ if (isset ( $result ) && $result) { // Si pasa por este if, la query está está
 			// Por cada vuelta del bucle creamos un jugador. Como es un objeto hacemos un array asociativo
 			$arrPersonaje = array(); // Asociativo
 			// Por cada columna de la tabla creamos una propiedad para el objeto
-			$arrPersonaje["nombre"] = $row["Nombre_Personaje"];
 			$arrPersonaje["id"] = $row["ID"];
-			$arrPersonaje["id_juego"] = $row["id_juego"];
+			$arrPersonaje["nombre"] = $row["Nombre_Personaje"];
+			$arrPersonaje["id_juego"] = $row["ID_Juego"];
 
 			// Por último, añadimos el nuevo jugador al array de jugadores
 			$arrPersonajes[] = $arrPersonaje;

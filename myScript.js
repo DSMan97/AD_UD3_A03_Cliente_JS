@@ -34,7 +34,7 @@ function borraHijos(elemento){
 
 }
 
-function mostrarPersonaje(){
+function mostrarPersonajes(){
 
 	var capa = document.getElementById("principal");
 
@@ -44,19 +44,96 @@ function mostrarPersonaje(){
 
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			pintaTabla(this.responseText);
+			console.log(this.responseText);
+			pintaTablaPersonajes(this.responseText);
+
 		}else{
 			console.log(this.readyState + " " + this.status);
 		}
 	};
 
-	xhttp.open("GET", "http://localhost/AD_UD3_A03_Cliente_JS/leeJugadores.php", true);
+	xhttp.open("GET", "http://localhost/AD_UD3_A03_Cliente_JS/leePersonajes.php", true);
+	xhttp.send();
+
+
+}
+function mostrarVideojuegos(){
+
+	var capa = document.getElementById("principal");
+
+	borraHijos(capa);
+
+	var xhttp = new XMLHttpRequest();
+
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			pintaTablaVideojuegos(this.responseText);
+		}else{
+			console.log(this.readyState + " " + this.status);
+		}
+	};
+
+	xhttp.open("GET", "http://localhost/AD_UD3_A03_Cliente_JS/leeVideojuego.php", true);
 	xhttp.send();
 
 
 }
 
-function pintaTabla(respuesta){
+function pintaTablaVideojuegos(respuesta){
+
+	var respuestaJSON = JSON.parse(respuesta);
+
+	var capa = document.getElementById("principal");
+
+	if(respuestaJSON["estado"] == "ok"){
+		console.log("VAMOS BIEN");
+
+		var arrPersonajes =  respuestaJSON["videojuegos"];//CONECTA CON LINEA 43 $arrMensaje (DEBAJO DE estado)
+
+		for(var i = 0; i < arrPersonajes.length; i++){
+
+			var fila = document.createElement("div");
+			fila.setAttribute("id","jugador_"+ arrPersonajes[i].id );
+			fila.setAttribute("class","jugador");
+			fila.setAttribute("onclick","prueba(this)");
+
+			var nombre = document.createElement("h2");
+			var texto = document.createTextNode(arrPersonajes[i].nombre);
+			nombre.appendChild(texto);
+			nombre.setAttribute("id","nombrejugador_"+ arrPersonajes[i].id );
+
+			var fecha = document.createElement("h2");
+			var textonum = document.createTextNode(arrPersonajes[i].fecha_lanzamiento);
+			fecha.appendChild(textonum);
+			fecha.setAttribute("id","numerojugador_"+ arrPersonajes[i].id );
+
+			var desarrollador = document.createElement("h2");
+			var textoequipo = document.createTextNode(arrPersonajes[i].desarrollador);
+			desarrollador.appendChild(textoequipo);
+			desarrollador.setAttribute("id","equipojugador_"+ arrPersonajes[i].id );
+
+			var plataforma = document.createElement("h2");
+			var textoequipo = document.createTextNode(arrPersonajes[i].plataforma);
+			plataforma.appendChild(textoequipo);
+			plataforma.setAttribute("id","equipojugador_"+ arrPersonajes[i].id );
+
+			fila.appendChild(nombre);
+			fila.appendChild(fecha);
+			fila.appendChild(desarrollador);
+			fila.appendChild(plataforma);
+
+
+			capa.appendChild(fila);
+		}
+
+	}else{
+		console.log("VAMOS MAL");
+	}
+
+
+
+}
+function pintaTablaPersonajes(respuesta){
 
 	var respuestaJSON = JSON.parse(respuesta);
 
@@ -80,18 +157,13 @@ function pintaTabla(respuesta){
 			nombre.setAttribute("id","nombrejugador_"+ arrPersonajes[i].id );
 
 			var numero = document.createElement("h2");
-			var textonum = document.createTextNode(arrPersonajes[i].numero);
+			var textonum = document.createTextNode(arrPersonajes[i].id_juego);
 			numero.appendChild(textonum);
 			numero.setAttribute("id","numerojugador_"+ arrPersonajes[i].id );
 
-			var equipo = document.createElement("h2");
-			var textoequipo = document.createTextNode(arrPersonajes[i].equipo);
-			equipo.appendChild(textoequipo);
-			equipo.setAttribute("id","equipojugador_"+ arrPersonajes[i].id );
 
 			fila.appendChild(nombre);
 			fila.appendChild(numero);
-			fila.appendChild(equipo);
 
 
 			capa.appendChild(fila);

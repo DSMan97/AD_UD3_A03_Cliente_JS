@@ -26,11 +26,11 @@ if (isset ( $result ) && $result) { // Si pasa por este if, la query está está
 			// Por cada vuelta del bucle creamos un jugador. Como es un objeto hacemos un array asociativo
 			$arrVideojuego = array();
 			// Por cada columna de la tabla creamos una propiedad para el objeto
-			$arrVideojuego["ID"] = $row["ID"];
-			$arrVideojuego["Nombre"] = $row["Nombre"];
-			$arrVideojuego["Fecha_Lanzamiento"] = $row["Fecha_Lanzamiento"];
-			$arrVideojuego["Desarrollador"] = $row["Desarrollador"];
-			$arrVideojuego["Plataforma"] = $row["Plataforma"];
+			$arrVideojuego["id"] = $row["ID"];
+			$arrVideojuego["nombre"] = $row["Nombre"];
+			$arrVideojuego["fecha_lanzamiento"] = $row["Fecha_Lanzamiento"];
+			$arrVideojuego["desarrollador"] = $row["Desarrollador"];
+			$arrVideojuego["plataforma"] = $row["Plataforma"];
 
 
 			// Por último, añadimos el nuevo jugador al array de jugadores
