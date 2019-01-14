@@ -24,7 +24,7 @@ if(isset($parameters)){
 	// Funcion declarada en jsonEsperado.php
 	if(JSONCorrectoBorrar($mensajeRecibido)){
 
-		$jugador = $mensajeRecibido["jugadorBorrar"];
+		$personaje = $mensajeRecibido["personajeBorrar"];
 
 		$nombre = $jugador["nombre"];
 		$equipo = $jugador["equipo"];

@@ -24,7 +24,7 @@ if(isset($parameters)){
 	// Funcion declarada en jsonEsperado.php
 	if(JSONCorrectoAnnadir($mensajeRecibido)){
 
-		$personaje = $mensajeRecibido["jugadorAnnadir"];
+		$personaje = $mensajeRecibido["personajeAnnadir"];
 
 		$id = $personaje["ID"];
 		$nombreP = $personaje["Nombre_Personaje"];
