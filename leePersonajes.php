@@ -28,7 +28,7 @@ if (isset ( $result ) && $result) { // Si pasa por este if, la query está está
 			// Por cada columna de la tabla creamos una propiedad para el objeto
 			$arrPersonaje["nombre"] = $row["Nombre_Personaje"];
 			$arrPersonaje["id"] = $row["ID"];
-			$arrPersonaje["id_juego"] = $row["ID_Juego"];
+			$arrPersonaje["id_juego"] = $row["id_juego"];
 
 			// Por último, añadimos el nuevo jugador al array de jugadores
 			$arrPersonajes[] = $arrPersonaje;
@@ -45,7 +45,7 @@ if (isset ( $result ) && $result) { // Si pasa por este if, la query está está
 		$arrMensaje["estado"] = "ok";
 		$arrMensaje["personajes"] = []; // Array vacío si no hay resultados
 	}
-	
+
 } else {
 
 	$arrMensaje["estado"] = "error";
