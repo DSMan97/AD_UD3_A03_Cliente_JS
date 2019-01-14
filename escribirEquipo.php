@@ -33,14 +33,14 @@ if(isset($parameters)){
 		$plataforma = $videojuego["Plataforma"];
 
 		$query  = "INSERT INTO  videojuegos (ID,Nombre,Fecha_Lanzamiento,Desarrollador,Plataforma) ";
-		$query .= "VALUES ('$id','$nombre','$lanzamiento','$desarrollo','$plataforma')";
+		$query .= "VALUES ('$id','$nombre','$lanzamiento','$desarrollo',$plataforma)";
 
 		$result = $conn->query ( $query );
 
 		if (isset ( $result ) && $result) { // Si pasa por este if, la query está está bien y se ha insertado correctamente
 
 			$arrMensaje["estado"] = "ok";
-			$arrMensaje["mensaje"] = "Equipo insertado correctamente";
+			$arrMensaje["mensaje"] = "Videojuego insertado correctamente";
 
 		}else{ // Se ha producido algún error al ejecutar la query
 

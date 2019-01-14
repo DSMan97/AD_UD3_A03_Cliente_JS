@@ -24,21 +24,21 @@ if(isset($parameters)){
 	// Funcion declarada en jsonEsperado.php
 	if(JSONCorrectoAnnadir($mensajeRecibido)){
 
-		$jugador = $mensajeRecibido["jugadorAnnadir"];
+		$personaje = $mensajeRecibido["jugadorAnnadir"];
 
-		$nombre = $jugador["nombre"];
-		$equipo = $jugador["equipo"];
-		$numero = $jugador["numero"];
+		$id = $personaje["ID"];
+		$nombreP = $personaje["Nombre_Personaje"];
+		$idGame = $personaje["ID_Juego"];
 
-		$query  = "INSERT INTO  player (playerName,idTeamFK,playerNumber) ";
-		$query .= "VALUES ('$nombre','$equipo',$numero)";
+		$query  = "INSERT INTO  personajes (ID,Nombre_Personaje,ID_Juego) ";
+		$query .= "VALUES ('$id','$nombreP',$idGame)";
 
 		$result = $conn->query ( $query );
 
 		if (isset ( $result ) && $result) { // Si pasa por este if, la query está está bien y se ha insertado correctamente
 
 			$arrMensaje["estado"] = "ok";
-			$arrMensaje["mensaje"] = "Jugador insertado correctamente";
+			$arrMensaje["mensaje"] = "Personaje insertado correctamente";
 			$lastId = $conn->insert_id;
 			$arrMensaje["lastId"] = $lastId;
 
