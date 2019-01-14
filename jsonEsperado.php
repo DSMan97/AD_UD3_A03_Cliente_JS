@@ -35,8 +35,8 @@ function JSONCorrectoAnnadir($recibido){
 
 	if(isset($recibido["peticion"]) && $recibido["peticion"] ="add" && isset($recibido["personajeAnnadir"])){
 
-		$auxJugador = $recibido["personajeAnnadir"];
-		if(isset($auxJugador["nombre"]) && isset($auxJugador["id"]) && isset($auxJugador["id_juego"])){
+		$auxPersonaje = $recibido["personajeAnnadir"];
+		if(isset($auxPersonaje["nombre"]) && isset($auxPersonaje["id"]) && isset($auxPersonaje["id_juego"])){
 			$auxCorrecto = true;
 		}
 
@@ -53,8 +53,8 @@ function JSONCorrectoBorrar($recibido){
 
 	if(isset($recibido["peticion"]) && $recibido["peticion"] ="del" && isset($recibido["personajeBorrar"])){
 
-		$auxJugador = $recibido["personajeBorrar"];
-		if(isset($auxJugador["nombre"]) && isset($auxJugador["id"]) && isset($auxJugador["id_juego"])){
+		$auxPersonaje = $recibido["personajeBorrar"];
+		if(isset($auxPersonaje["nombre"]) && isset($auxPersonaje["id"]) && isset($auxPersonaje["id_juego"])){
 			$auxCorrecto = true;
 		}
 
@@ -74,8 +74,8 @@ function JSON2CorrectoAnnadir($recibido){
 
 	if(isset($recibido["peticion"]) && $recibido["peticion"] ="add" && isset($recibido["videojuegoAnnadir"])){
 
-		$auxJugador = $recibido["videojuegoAnnadir"];
-		if(isset($auxJugador["ID"]) && isset($auxJugador["Nombre"]) && isset($auxJugador["Fecha_Lanzamiento"]) && isset($auxJugador["Desarrollador"]) && isset($auxJugador["Plataforma"])){
+		$auxVideojuego = $recibido["videojuegoAnnadir"];
+		if(isset($auxVideojuego["ID"]) && isset($auxVideojuego["Nombre"]) && isset($auxVideojuego["Fecha_Lanzamiento"]) && isset($auxVideojuego["Desarrollador"]) && isset($auxVideojuego["Plataforma"])){
 			$auxCorrecto = true;
 		}
 
@@ -92,8 +92,8 @@ function JSON2CorrectoBorrar($recibido){
 
 	if(isset($recibido["peticion"]) && $recibido["peticion"] ="del" && isset($recibido["videojuegoBorrar"])){
 
-		$auxJugador = $recibido["videojuegoBorrar"];
-		if(isset($auxJugador["ID"]) && isset($auxJugador["Nombre"]) && isset($auxJugador["Fecha_Lanzamiento"]) && isset($auxJugador["Desarrollador"]) && isset($auxJugador["Plataforma"])){
+		$auxVideojuego = $recibido["videojuegoBorrar"];
+		if(isset($auxVideojuego["ID"]) && isset($auxVideojuego["Nombre"]) && isset($auxVideojuego["Fecha_Lanzamiento"]) && isset($auxVideojuego["Desarrollador"]) && isset($auxVideojuego["Plataforma"])){
 			$auxCorrecto = true;
 		}
 
