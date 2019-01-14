@@ -126,20 +126,22 @@ function prueba(elemento){
 }
 
 function insertarColega(){
-
-	var jugador = {};
+//Insertar Videojuego
+	var videojuego = {};
 
 	var btnInsert = document.getElementById("btnInsert").value;
-	jugador.nombre = document.getElementById("nombreColega").value;
-	jugador.numero = document.getElementById("numeroColega").value;
-	jugador.equipo = document.getElementById("equipoColega").value;
+	videojuego.nombre = document.getElementById("nombre").value;
+	videojuego.numero = document.getElementById("id").value;
+	videojuego.fecha = document.getElementById("fecha").value;
+	videojuego.desarrollador = document.getElementById("desarrollador").value;
+	videojuego.plataforma = document.getElementById("plataforma").value;
   btnInsert = document.getElementById("btnInsert").disabled=true;
-	console.log(jugador);
+	console.log(videojuego);
 
 	var peticion = {};
 
 	peticion.peticion = "add";
-	peticion.jugadorAnnadir = jugador;
+	peticion.videojuegoAnnadir = videojuego;
 
 	console.log(peticion);
 
@@ -148,7 +150,7 @@ function insertarColega(){
 	console.log(peticionJSON);
 
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/escribirJugador.php");
+	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/escribirVideojuego.php");
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
 
 	xmlhttp.onreadystatechange = function() {
