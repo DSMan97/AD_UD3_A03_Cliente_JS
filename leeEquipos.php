@@ -11,53 +11,56 @@ $arrMensaje = array();  // Este array es el codificaremos como JSON tanto si hay
 
 
 
-$query = "SELECT * FROM team";
+$query = "SELECT * FROM videojuegos";
 
 $result = $conn->query ( $query );
 
 if (isset ( $result ) && $result) { // Si pasa por este if, la query está está bien y se obtiene resultado
-	
+
 	if ($result->num_rows > 0) { // Aunque la query esté bien puede no obtenerse resultado (tabla vacía). Comprobamos antes de recorrer
-		
-		$arrEquipos = array();
-		
+
+		$arrVideojuegos = array();
+
 		while ( $row = $result->fetch_assoc () ) {
-			
+
 			// Por cada vuelta del bucle creamos un jugador. Como es un objeto hacemos un array asociativo
-			$arrEquipo = array();
+			$arrVideojuego = array();
 			// Por cada columna de la tabla creamos una propiedad para el objeto
-			$arrEquipo["id"] = $row["idTeam"];
-			$arrEquipo["equipo"] = $row["Name"];
-			
-			
+			$arrVideojuego["ID"] = $row["ID"];
+			$arrVideojuego["Nombre"] = $row["Nombre"];
+			$arrVideojuego["Fecha_Lanzamiento"] = $row["Fecha_Lanzamiento"];
+			$arrVideojuego["Desarrollador"] = $row["Desarrollador"];
+			$arrVideojuego["Plataforma"] = $row["Plataforma"];
+
+
 			// Por último, añadimos el nuevo jugador al array de jugadores
-			$arrEquipos[] = $arrEquipo;
-			
+			$arrVideojuegos[] = $arrVideojuego;
+
 		}
-		
+
 		// Añadimos al $arrMensaje el array de jugadores y añadimos un campo para indicar que todo ha ido OK
 		$arrMensaje["estado"] = "ok";
-		$arrMensaje["equipos"] = $arrEquipos;
-		
-		
+		$arrMensaje["equipos"] = $arrVideojuegos;
+
+
 	} else {
-		
+
 		$arrMensaje["estado"] = "ok";
-		$arrMensaje["equipos"] = []; // Array vacío si no hay resultados
+		$arrMensaje["videojuegos"] = []; // Array vacío si no hay resultados
 	}
-	
+
 } else {
-	
+
 	$arrMensaje["estado"] = "error";
 	$arrMensaje["mensaje"] = "SE HA PRODUCIDO UN ERROR AL ACCEDER A LA BASE DE DATOS";
 	$arrMensaje["error"] = $conn->error;
 	$arrMensaje["query"] = $query;
-	
+
 }
 
 $mensajeJSON = json_encode($arrMensaje,JSON_PRETTY_PRINT);
 
-//echo "<pre>";  // Descomentar si se quiere ver resultado "bonito" en navegador. Solo para pruebas 
+//echo "<pre>";  // Descomentar si se quiere ver resultado "bonito" en navegador. Solo para pruebas
 echo $mensajeJSON;
 //echo "</pre>"; // Descomentar si se quiere ver resultado "bonito" en navegador
 
