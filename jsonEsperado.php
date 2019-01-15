@@ -36,7 +36,7 @@ function JSONCorrectoAnnadir($recibido){
 	if(isset($recibido["peticion"]) && $recibido["peticion"] ="add" && isset($recibido["personajeAnnadir"])){
 
 		$auxPersonaje = $recibido["personajeAnnadir"];
-		if(isset($auxPersonaje["nombre"]) && isset($auxPersonaje["id"]) && isset($auxPersonaje["id_juego"])){
+		if(isset($auxPersonaje["id"]) && isset($auxPersonaje["nombre"]) && isset($auxPersonaje["id_juego"])){
 			$auxCorrecto = true;
 		}
 

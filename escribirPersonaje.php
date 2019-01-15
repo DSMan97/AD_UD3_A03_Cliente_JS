@@ -26,12 +26,12 @@ if(isset($parameters)){
 
 		$personaje = $mensajeRecibido["personajeAnnadir"];
 
-		$id = $personaje["ID"];
-		$nombreP = $personaje["Nombre_Personaje"];
-		$idGame = $personaje["id_juego"];
+		$id = $personaje["id"];
+		$nombre = $personaje["nombre"];
+		$id_juego = $personaje["id_juego"];
 
 		$query  = "INSERT INTO  personajes (ID,Nombre_Personaje,ID_Juego) ";
-		$query .= "VALUES ('$id','$nombreP','$idGame')";
+		$query .= "VALUES ('$id','$nombre','$id_juego')";
 
 		$result = $conn->query ( $query );
 

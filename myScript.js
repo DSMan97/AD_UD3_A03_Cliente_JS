@@ -260,9 +260,9 @@ function insertarPersonaje(){
 	var personaje = {};
 
 	var btnInsert = document.getElementById("boton2").value;
-	personaje.nombreP = document.getElementById("nombrePersonaje").value;
+	personaje.nombre = document.getElementById("nombrePersonaje").value;
 	personaje.id = document.getElementById("idPersonaje").value;
-	personaje.idGame = document.getElementById("comparacionPersonaje").value;
+	personaje.id_juego = document.getElementById("comparacionPersonaje").value;
   btnInsert = document.getElementById("boton2").disabled=true;
 	console.log(personaje);
 
@@ -284,63 +284,13 @@ function insertarPersonaje(){
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 
+			console.log(this.responseText)
 			var respuestaJSON = JSON.parse(this.responseText);
 
 			if(respuestaJSON["estado"] == "ok"){
 
-				alert("INSERTADO CORRECTAMENTE. ID: " + respuestaJSON["lastId"] );
-btnInsert = document.getElementById("boton2").disabled=false;
-location.reload();
-
-			}else{
-				alert(respuestaJSON["mensaje"]);
-			}
-		}else{
-			console.log(this.readyState + " " + this.status);
-			if (this.readyState == 4 && this.status == 404) {
-				alert("URL INCORRECTA");
-
-			}
-		}
-	};
-
-//////////////////////////////////
-
-function borrarPersonaje(){
-
-	var personaje = {};
-
-	var btnDelete = document.getElementById("boton3").value;
-	personaje.id = document.getElementById("idPersonaje").value;
-	personaje.nombreP = document.getElementById("nombrePersonaje").value;
-	personaje.idGame = document.getElementById("comparacionPersonaje").value;
-  btnDelete = document.getElementById("boton3").disabled=true;
-	console.log(personaje);
-
-	var peticion = {};
-
-	peticion.peticion = "del";
-	peticion.personajeBorrar = personaje;
-
-	console.log(peticion);
-
-	peticionJSON = JSON.stringify(peticion);
-
-	console.log(peticionJSON);
-
-	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/borrarPersonaje.php");
-	xmlhttp.setRequestHeader("Content-Type", "application/json");
-
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-
-			var respuestaJSON = JSON.parse(this.responseText);
-
-			if(respuestaJSON["estado"] == "ok"){
-
-				alert("Borrado CORRECTAMENTE. ID: " + respuestaJSON["lastId"] );
-btnDelete = document.getElementById("boton3").disabled=false;
+				alert("INSERTADO CORRECTAMENTE.");
+btnInsert = document.getElementById("btnInsert").disabled=false;
 location.reload();
 
 			}else{
@@ -419,4 +369,3 @@ location.reload();
 }
 
 console.log("JS CARGADO");
-}
