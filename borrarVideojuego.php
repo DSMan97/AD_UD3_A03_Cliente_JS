@@ -26,13 +26,13 @@ if(isset($parameters)){
 
 		$videojuego = $mensajeRecibido["videojuegoBorrar"];
 
-		$id = $videojuego["ID"];
-		$nombre = $videojuego["Nombre"];
-		$fecha = $videojuego["Fecha_Lanzamiento"];
-		$desarrollo = $videojuego["Desarrollador"];
-		$plataforma = $videojuego["Plataforma"];
+		$id = $videojuego["id"];
+		$nombre = $videojuego["nombre"];
+		$lanzamiento = $videojuego["fecha_lanzamiento"];
+		$desarrollo = $videojuego["desarrollador"];
+		$plataforma = $videojuego["plataforma"];
 
-		$query  = "DELETE FROM videojuegos WHERE ID=$id AND Nombre=$nombre AND Fecha_Lanzamiento=$fecha AND Desarrollador=$desarrollo AND Plataforma=$plataforma";
+		$query  = "DELETE FROM videojuegos WHERE ID=$id AND Nombre=$nombre AND Fecha_Lanzamiento=$lanzamiento AND Desarrollador=$desarrollo AND Plataforma=$plataforma";
 
 		$result = $conn->query ( $query );
 
@@ -40,8 +40,6 @@ if(isset($parameters)){
 
 			$arrMensaje["estado"] = "ok";
 			$arrMensaje["mensaje"] = "Videojuego borrado correctamente";
-			$lastId = $conn->insert_id;
-			$arrMensaje["lastId"] = $lastId;
 
 		}else{ // Se ha producido algún error al ejecutar la query
 
