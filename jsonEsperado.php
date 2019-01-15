@@ -21,9 +21,11 @@ $arrVideojuegoEsperado["plataforma"]="";
 
 
 $arrEsperado["personajeAnnadir"] = $arrPersonajeEsperado;
+$arrEsperado["personajeUpdate"] = $arrPersonajeEsperado;
 $arrEsperado["personajeBorrar"] = $arrPersonajeEsperado;
 
 $arrEsperado["videojuegoAnnadir"] = $arrVideojuegoEsperado;
+$arrEsperado["videojuegoUpdate"] = $arrVideojuegoEsperado;
 $arrEsperado["videojuegoBorrar"] = $arrVideojuegoEsperado;
 
 
@@ -36,6 +38,24 @@ function JSONCorrectoAnnadir($recibido){
 	if(isset($recibido["peticion"]) && $recibido["peticion"] ="add" && isset($recibido["personajeAnnadir"])){
 
 		$auxPersonaje = $recibido["personajeAnnadir"];
+		if(isset($auxPersonaje["id"]) && isset($auxPersonaje["nombre"]) && isset($auxPersonaje["id_juego"])){
+			$auxCorrecto = true;
+		}
+
+	}
+
+
+	return $auxCorrecto;
+
+}
+
+function JSONCorrectoUpdate($recibido){
+
+	$auxCorrecto = false;
+
+	if(isset($recibido["peticion"]) && $recibido["peticion"] ="add" && isset($recibido["personajeUpdate"])){
+
+		$auxPersonaje = $recibido["personajeUpdate"];
 		if(isset($auxPersonaje["id"]) && isset($auxPersonaje["nombre"]) && isset($auxPersonaje["id_juego"])){
 			$auxCorrecto = true;
 		}
@@ -75,6 +95,24 @@ function JSON2CorrectoAnnadir($recibido){
 	if(isset($recibido["peticion"]) && $recibido["peticion"] ="add" && isset($recibido["videojuegoAnnadir"])){
 
 		$auxVideojuego = $recibido["videojuegoAnnadir"];
+		if(isset($auxVideojuego["id"]) && isset($auxVideojuego["nombre"]) && isset($auxVideojuego["fecha_lanzamiento"]) && isset($auxVideojuego["desarrollador"]) && isset($auxVideojuego["plataforma"])){
+			$auxCorrecto = true;
+		}
+
+	}
+
+
+	return $auxCorrecto;
+
+}
+
+function JSON2CorrectoUpdate($recibido){
+
+	$auxCorrecto = false;
+
+	if(isset($recibido["peticion"]) && $recibido["peticion"] ="update" && isset($recibido["videojuegoUpdate"])){
+
+		$auxVideojuego = $recibido["videojuegoUpdate"];
 		if(isset($auxVideojuego["id"]) && isset($auxVideojuego["nombre"]) && isset($auxVideojuego["fecha_lanzamiento"]) && isset($auxVideojuego["desarrollador"]) && isset($auxVideojuego["plataforma"])){
 			$auxCorrecto = true;
 		}

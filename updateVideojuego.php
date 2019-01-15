@@ -22,9 +22,9 @@ if(isset($parameters)){
 	$mensajeRecibido = json_decode($parameters, true);
 	// Comprobamos que están todos los datos en el json que hemos recibido
 	// Funcion declarada en jsonEsperado.php
-	if(JSON2CorrectoBorrar($mensajeRecibido)){
+	if(JSON2CorrectoUpdate($mensajeRecibido)){
 
-		$videojuego = $mensajeRecibido["videojuegoBorrar"];
+		$videojuego = $mensajeRecibido["videojuegoUpdate"];
 
 		$id = $videojuego["id"];
 		$nombre = $videojuego["nombre"];
@@ -32,14 +32,14 @@ if(isset($parameters)){
 		$desarrollo = $videojuego["desarrollador"];
 		$plataforma = $videojuego["plataforma"];
 
-		$query  = "DELETE FROM videojuegos WHERE ID=$id AND Nombre=$nombre AND Fecha_Lanzamiento=$lanzamiento AND Desarrollador=$desarrollo AND Plataforma=$plataforma";
+		$query  = "UPDATE `videojuegos` SET Nombre='$nombre',Fecha_Lanzamiento='$lanzamiento',Desarrollador='$desarrollo',Plataforma='$plataforma' WHERE ID='$id'";
 
 		$result = $conn->query ( $query );
 
 		if (isset ( $result ) && $result) { // Si pasa por este if, la query está está bien y se ha insertado correctamente
 
 			$arrMensaje["estado"] = "ok";
-			$arrMensaje["mensaje"] = "Videojuego borrado correctamente";
+			$arrMensaje["mensaje"] = "Videojuego actualizado correctamente";
 
 		}else{ // Se ha producido algún error al ejecutar la query
 
@@ -47,7 +47,6 @@ if(isset($parameters)){
 			$arrMensaje["mensaje"] = "SE HA PRODUCIDO UN ERROR AL ACCEDER A LA BASE DE DATOS";
 			$arrMensaje["error"] = $conn->error;
 			$arrMensaje["query"] = $query;
-
 		}
 
 
@@ -68,9 +67,9 @@ if(isset($parameters)){
 
 $mensajeJSON = json_encode($arrMensaje,JSON_PRETTY_PRINT);
 
-//echo "<pre>";  // Descomentar si se quiere ver resultado "bonito" en navegador. Solo para pruebas
+"<pre>";  // Descomentar si se quiere ver resultado "bonito" en navegador. Solo para pruebas
 echo $mensajeJSON;
-//echo "</pre>"; // Descomentar si se quiere ver resultado "bonito" en navegador
+"</pre>"; // Descomentar si se quiere ver resultado "bonito" en navegador
 
 $conn->close ();
 

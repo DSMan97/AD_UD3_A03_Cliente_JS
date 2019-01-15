@@ -310,6 +310,115 @@ location.reload();
 
 }
 
+function updateVideojuego(){
+
+	var videojuego = {};
+
+	var btnInsert = document.getElementById("btnInsert").value;
+	videojuego.id = document.getElementById("idVideojuego").value;
+	videojuego.nombre = document.getElementById("nombreVideojuego").value;
+	videojuego.fecha_lanzamiento = document.getElementById("fechaVideojuego").value;
+	videojuego.desarrollador = document.getElementById("desarrolloVideojuego").value;
+	videojuego.plataforma = document.getElementById("plataformaVideojuego").value;
+  btnInsert = document.getElementById("btnInsert").disabled=true;
+	console.log(videojuego);
+
+	var peticion = {};
+
+	peticion.peticion = "update";
+	peticion.videojuegoUpdate = videojuego;
+
+	console.log(peticion);
+
+	peticionJSON = JSON.stringify(peticion);
+
+	console.log(peticionJSON);
+
+	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/updateVideojuego.php");
+	xmlhttp.setRequestHeader("Content-Type", "application/json");
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+
+			console.log(this.responseText)
+			var respuestaJSON = JSON.parse(this.responseText);
+
+			if(respuestaJSON["estado"] == "ok"){
+
+				alert("ACTUALIZADO CORRECTAMENTE.");
+btnInsert = document.getElementById("btnInsert").disabled=false;
+location.reload();
+
+			}else{
+				alert(respuestaJSON["mensaje"]);
+			}
+		}else{
+			console.log(this.readyState + " " + this.status);
+			if (this.readyState == 4 && this.status == 404) {
+				alert("URL INCORRECTA");
+
+			}
+		}
+	};
+
+	xmlhttp.send(peticionJSON);
+
+
+}
+function updatePersonaje(){
+	var personaje = {};
+
+	var btnInsert = document.getElementById("boton2").value;
+	personaje.nombre = document.getElementById("nombrePersonaje").value;
+	personaje.id = document.getElementById("idPersonaje").value;
+	personaje.id_juego = document.getElementById("comparacionPersonaje").value;
+  btnInsert = document.getElementById("boton2").disabled=true;
+	console.log(personaje);
+
+	var peticion = {};
+
+	peticion.peticion = "update";
+	peticion.personajeUpdate = personaje;
+
+	console.log(peticion);
+
+	peticionJSON = JSON.stringify(peticion);
+
+	console.log(peticionJSON);
+
+	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/updatePersonaje.php");
+	xmlhttp.setRequestHeader("Content-Type", "application/json");
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+
+			console.log(this.responseText)
+			var respuestaJSON = JSON.parse(this.responseText);
+
+			if(respuestaJSON["estado"] == "ok"){
+
+				alert("Actualizado CORRECTAMENTE.");
+btnInsert = document.getElementById("btnInsert").disabled=false;
+location.reload();
+
+			}else{
+				alert(respuestaJSON["mensaje"]);
+			}
+		}else{
+			console.log(this.readyState + " " + this.status);
+			if (this.readyState == 4 && this.status == 404) {
+				alert("URL INCORRECTA");
+
+			}
+		}
+	};
+
+	xmlhttp.send(peticionJSON);
+
+
+}
 //Borrar videojuego
 
 function borrarVideojuego(){

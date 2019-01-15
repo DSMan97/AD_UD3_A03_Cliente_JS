@@ -22,24 +22,26 @@ if(isset($parameters)){
 	$mensajeRecibido = json_decode($parameters, true);
 	// Comprobamos que están todos los datos en el json que hemos recibido
 	// Funcion declarada en jsonEsperado.php
-	if(JSON2CorrectoBorrar($mensajeRecibido)){
+	if(JSONCorrectoUpdate($mensajeRecibido)){
 
-		$videojuego = $mensajeRecibido["videojuegoBorrar"];
+		$personaje = $mensajeRecibido["personajeUpdate"];
 
-		$id = $videojuego["id"];
-		$nombre = $videojuego["nombre"];
-		$lanzamiento = $videojuego["fecha_lanzamiento"];
-		$desarrollo = $videojuego["desarrollador"];
-		$plataforma = $videojuego["plataforma"];
+		$id = $personaje["id"];
+		$nombre = $personaje["nombre"];
+		$id_juego = $personaje["id_juego"];
 
-		$query  = "DELETE FROM videojuegos WHERE ID=$id AND Nombre=$nombre AND Fecha_Lanzamiento=$lanzamiento AND Desarrollador=$desarrollo AND Plataforma=$plataforma";
+
+
+		$query  = "	UPDATE `personajes` SET Nombre_Personaje='$nombre',ID_Juego='$id_juego' WHERE ID='$id'";
 
 		$result = $conn->query ( $query );
 
 		if (isset ( $result ) && $result) { // Si pasa por este if, la query está está bien y se ha insertado correctamente
 
 			$arrMensaje["estado"] = "ok";
-			$arrMensaje["mensaje"] = "Videojuego borrado correctamente";
+			$arrMensaje["mensaje"] = "Personaje insertado correctamente";
+			$lastId = $conn->insert_id;
+			$arrMensaje["lastId"] = $lastId;
 
 		}else{ // Se ha producido algún error al ejecutar la query
 
