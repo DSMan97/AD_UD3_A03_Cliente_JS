@@ -26,14 +26,14 @@ if(isset($parameters)){
 
 		$videojuego = $mensajeRecibido["videojuegoAnnadir"];
 
-		$id = $videojuego["ID"];
-		$nombre = $videojuego["Nombre"];
-		$lanzamiento = $videojuego["Fecha_Lanzamiento"];
-		$desarrollo = $videojuego["Desarrollador"];
-		$plataforma = $videojuego["Plataforma"];
+		$id = $videojuego["id"];
+		$nombre = $videojuego["nombre"];
+		$lanzamiento = $videojuego["fecha_lanzamiento"];
+		$desarrollo = $videojuego["desarrollador"];
+		$plataforma = $videojuego["plataforma"];
 
 		$query  = "INSERT INTO  videojuegos (ID,Nombre,Fecha_Lanzamiento,Desarrollador,Plataforma) ";
-		$query .= "VALUES ('$id','$nombre','$lanzamiento','$desarrollo',$plataforma)";
+		$query .= "VALUES ('$id','$nombre','$lanzamiento','$desarrollo','$plataforma')";
 
 		$result = $conn->query ( $query );
 
@@ -48,7 +48,6 @@ if(isset($parameters)){
 			$arrMensaje["mensaje"] = "SE HA PRODUCIDO UN ERROR AL ACCEDER A LA BASE DE DATOS";
 			$arrMensaje["error"] = $conn->error;
 			$arrMensaje["query"] = $query;
-
 		}
 
 
@@ -69,9 +68,9 @@ if(isset($parameters)){
 
 $mensajeJSON = json_encode($arrMensaje,JSON_PRETTY_PRINT);
 
-//echo "<pre>";  // Descomentar si se quiere ver resultado "bonito" en navegador. Solo para pruebas
+"<pre>";  // Descomentar si se quiere ver resultado "bonito" en navegador. Solo para pruebas
 echo $mensajeJSON;
-//echo "</pre>"; // Descomentar si se quiere ver resultado "bonito" en navegador
+"</pre>"; // Descomentar si se quiere ver resultado "bonito" en navegador
 
 $conn->close ();
 

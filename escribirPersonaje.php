@@ -31,7 +31,7 @@ if(isset($parameters)){
 		$idGame = $personaje["id_juego"];
 
 		$query  = "INSERT INTO  personajes (ID,Nombre_Personaje,ID_Juego) ";
-		$query .= "VALUES ('$id','$nombreP',$idGame)";
+		$query .= "VALUES ('$id','$nombreP','$idGame')";
 
 		$result = $conn->query ( $query );
 

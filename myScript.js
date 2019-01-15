@@ -202,10 +202,10 @@ function insertarVideojuego(){
 	var videojuego = {};
 
 	var btnInsert = document.getElementById("btnInsert").value;
-	videojuego.nombre = document.getElementById("nombreVideojuego").value;
 	videojuego.id = document.getElementById("idVideojuego").value;
-	videojuego.lanzamiento = document.getElementById("fechaVideojuego").value;
-	videojuego.desarrollado = document.getElementById("desarrolloVideojuego").value;
+	videojuego.nombre = document.getElementById("nombreVideojuego").value;
+	videojuego.fecha_lanzamiento = document.getElementById("fechaVideojuego").value;
+	videojuego.desarrollador = document.getElementById("desarrolloVideojuego").value;
 	videojuego.plataforma = document.getElementById("plataformaVideojuego").value;
   btnInsert = document.getElementById("btnInsert").disabled=true;
 	console.log(videojuego);
@@ -228,11 +228,12 @@ function insertarVideojuego(){
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 
+			console.log(this.responseText)
 			var respuestaJSON = JSON.parse(this.responseText);
 
 			if(respuestaJSON["estado"] == "ok"){
 
-				alert("INSERTADO CORRECTAMENTE. ID: " + respuestaJSON["lastId"] );
+				alert("INSERTADO CORRECTAMENTE.");
 btnInsert = document.getElementById("btnInsert").disabled=false;
 location.reload();
 

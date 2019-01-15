@@ -13,11 +13,11 @@ $arrPersonajeEsperado["nombre"] = "Lorenzo (Un string)";
 $arrPersonajeEsperado["id"] = "2 (Un int)";
 $arrPersonajeEsperado["id_juego"] = "2 (Un int)";
 
-$arrVideojuegoEsperado["ID"]="2";
-$arrVideojuegoEsperado["Nombre"]="Monster Hunter:World";
-$arrVideojuegoEsperado["Fecha_Lanzamiento"]="26/1/2018";
-$arrVideojuegoEsperado["Desarrollador"]="Capcom";
-$arrVideojuegoEsperado["Plataforma"]="Ps4/Xbox360/PC";
+$arrVideojuegoEsperado["id"]="";
+$arrVideojuegoEsperado["nombre"]="";
+$arrVideojuegoEsperado["fecha_lanzamiento"]="";
+$arrVideojuegoEsperado["desarrollador"]="";
+$arrVideojuegoEsperado["plataforma"]="";
 
 
 $arrEsperado["personajeAnnadir"] = $arrPersonajeEsperado;
@@ -75,7 +75,7 @@ function JSON2CorrectoAnnadir($recibido){
 	if(isset($recibido["peticion"]) && $recibido["peticion"] ="add" && isset($recibido["videojuegoAnnadir"])){
 
 		$auxVideojuego = $recibido["videojuegoAnnadir"];
-		if(isset($auxVideojuego["ID"]) && isset($auxVideojuego["Nombre"]) && isset($auxVideojuego["Fecha_Lanzamiento"]) && isset($auxVideojuego["Desarrollador"]) && isset($auxVideojuego["Plataforma"])){
+		if(isset($auxVideojuego["id"]) && isset($auxVideojuego["nombre"]) && isset($auxVideojuego["fecha_lanzamiento"]) && isset($auxVideojuego["desarrollador"]) && isset($auxVideojuego["plataforma"])){
 			$auxCorrecto = true;
 		}
 
