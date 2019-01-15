@@ -93,7 +93,7 @@ function JSON2CorrectoBorrar($recibido){
 	if(isset($recibido["peticion"]) && $recibido["peticion"] ="del" && isset($recibido["videojuegoBorrar"])){
 
 		$auxVideojuego = $recibido["videojuegoBorrar"];
-		if(isset($auxVideojuego["ID"]) && isset($auxVideojuego["Nombre"]) && isset($auxVideojuego["Fecha_Lanzamiento"]) && isset($auxVideojuego["Desarrollador"]) && isset($auxVideojuego["Plataforma"])){
+		if(isset($auxVideojuego["id"]) && isset($auxVideojuego["nombre"]) && isset($auxVideojuego["fecha_lanzamiento"]) && isset($auxVideojuego["desarrollador"]) && isset($auxVideojuego["plataforma"])){
 			$auxCorrecto = true;
 		}
 
