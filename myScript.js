@@ -417,8 +417,5 @@ location.reload();
 
 }
 
-
-
-
-
 console.log("JS CARGADO");
+}
