@@ -26,11 +26,11 @@ if(isset($parameters)){
 
 		$personaje = $mensajeRecibido["personajeBorrar"];
 
-		$id = $personaje["ID"];
-		$nombreP = $personaje["Nombre_Personaje"];
+		$id = $personaje["id"];
+		$nombreP = $personaje["nombre"];
 		$idGame = $personaje["id_juego"];
 
-		$query  = "DELETE FROM personajes WHERE ID=$id AND Nombre_Personaje=$nombreP AND ID_Juego=$idGame";
+		$query  = "DELETE FROM personajes where ID=$id";
 
 		$result = $conn->query ( $query );
 
@@ -38,8 +38,7 @@ if(isset($parameters)){
 
 			$arrMensaje["estado"] = "ok";
 			$arrMensaje["mensaje"] = "Personaje borrado correctamente";
-			$lastId = $conn->insert_id;
-			$arrMensaje["lastId"] = $lastId;
+
 
 		}else{ // Se ha producido algún error al ejecutar la query
 
