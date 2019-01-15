@@ -198,7 +198,7 @@ function prueba(elemento){
 }
 
 function insertarVideojuego(){
-//Insertar Videojuego
+
 	var videojuego = {};
 
 	var btnInsert = document.getElementById("btnInsert").value;
@@ -317,13 +317,13 @@ function borrarVideojuego(){
 	var videojuego = {};
 
 	var btnDelete = document.getElementById("btnDelete").value;
-	videojuego.nombre = document.getElementById("nombreVideojuego").value;
 	videojuego.id = document.getElementById("idVideojuego").value;
-	videojuego.lanzamiento = document.getElementById("fechaVideojuego").value;
-	videojuego.desarrollado = document.getElementById("desarrolloVideojuego").value;
+	videojuego.nombre = document.getElementById("nombreVideojuego").value;
+	videojuego.fecha_lanzamiento = document.getElementById("fechaVideojuego").value;
+	videojuego.desarrollador = document.getElementById("desarrolloVideojuego").value;
 	videojuego.plataforma = document.getElementById("plataformaVideojuego").value;
   btnDelete = document.getElementById("btnDelete").disabled=true;
-	console.log(personaje);
+	console.log(videojuego);
 
 	var peticion = {};
 
@@ -343,13 +343,14 @@ function borrarVideojuego(){
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 
+		console.log(this.responseText)
 			var respuestaJSON = JSON.parse(this.responseText);
 
 			if(respuestaJSON["estado"] == "ok"){
 
-				alert("Borrado CORRECTAMENTE. ID: " + respuestaJSON["lastId"] );
-btnDelete = document.getElementById("btnDelete").disabled=false;
-location.reload();
+				alert("Borrado CORRECTAMENTE. "  );
+				btnDelete = document.getElementById("btnDelete").disabled=false;
+				location.reload();
 
 			}else{
 				alert(respuestaJSON["mensaje"]);
