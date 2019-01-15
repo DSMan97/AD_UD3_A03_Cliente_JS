@@ -359,4 +359,66 @@ location.reload();
 
 }
 
+//Borrar videojuego
+
+function borrarVideojuego(){
+
+	var videojuego = {};
+
+	var btnDelete = document.getElementById("btnDelete").value;
+	videojuego.nombre = document.getElementById("nombreVideojuego").value;
+	videojuego.id = document.getElementById("idVideojuego").value;
+	videojuego.lanzamiento = document.getElementById("fechaVideojuego").value;
+	videojuego.desarrollado = document.getElementById("desarrolloVideojuego").value;
+	videojuego.plataforma = document.getElementById("plataformaVideojuego").value;
+  btnDelete = document.getElementById("btnDelete").disabled=true;
+	console.log(personaje);
+
+	var peticion = {};
+
+	peticion.peticion = "del";
+	peticion.videojuegoBorrar = videojuego;
+
+	console.log(peticion);
+
+	peticionJSON = JSON.stringify(peticion);
+
+	console.log(peticionJSON);
+
+	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/borrarVideojuego.php");
+	xmlhttp.setRequestHeader("Content-Type", "application/json");
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+
+			var respuestaJSON = JSON.parse(this.responseText);
+
+			if(respuestaJSON["estado"] == "ok"){
+
+				alert("Borrado CORRECTAMENTE. ID: " + respuestaJSON["lastId"] );
+btnDelete = document.getElementById("btnDelete").disabled=false;
+location.reload();
+
+			}else{
+				alert(respuestaJSON["mensaje"]);
+			}
+		}else{
+			console.log(this.readyState + " " + this.status);
+			if (this.readyState == 4 && this.status == 404) {
+				alert("URL INCORRECTA");
+
+			}
+		}
+	};
+
+	xmlhttp.send(peticionJSON);
+
+
+}
+
+
+
+
+
 console.log("JS CARGADO");
