@@ -38,7 +38,7 @@ function mostrarPersonajes(){
 
 	var capa = document.getElementById("principal");
 
-	borraHijos(capa);
+borraHijos(capa);
 
 	var xhttp = new XMLHttpRequest();
 
@@ -197,7 +197,7 @@ function prueba(elemento){
 
 }
 
-function insertarColega(){
+function insertarVideojuego(){
 //Insertar Videojuego
 	var videojuego = {};
 
