@@ -202,11 +202,11 @@ function insertarVideojuego(){
 	var videojuego = {};
 
 	var btnInsert = document.getElementById("btnInsert").value;
-	videojuego.nombre = document.getElementById("nombre").value;
-	videojuego.numero = document.getElementById("id").value;
-	videojuego.fecha = document.getElementById("fecha").value;
-	videojuego.desarrollador = document.getElementById("desarrollador").value;
-	videojuego.plataforma = document.getElementById("plataforma").value;
+	videojuego.nombre = document.getElementById("nombreVideojuego").value;
+	videojuego.id = document.getElementById("idVideojuego").value;
+	videojuego.lanzamiento = document.getElementById("fechaVideojuego").value;
+	videojuego.desarrollado = document.getElementById("desarrolloVideojuego").value;
+	videojuego.plataforma = document.getElementById("plataformaVideojuego").value;
   btnInsert = document.getElementById("btnInsert").disabled=true;
 	console.log(videojuego);
 
@@ -252,6 +252,58 @@ location.reload();
 
 
 }
+
+//Insertar Personaje
+
+function insertarPersonaje(){
+	var personaje = {};
+
+	var btnInsert = document.getElementById("boton2").value;
+	personaje.nombreP = document.getElementById("nombrePersonaje").value;
+	personaje.id = document.getElementById("idPersonaje").value;
+	personaje.idGame = document.getElementById("comparacionPersonaje").value;
+  btnInsert = document.getElementById("boton2").disabled=true;
+	console.log(personaje);
+
+	var peticion = {};
+
+	peticion.peticion = "add";
+	peticion.personajeAnnadir = personaje;
+
+	console.log(peticion);
+
+	peticionJSON = JSON.stringify(peticion);
+
+	console.log(peticionJSON);
+
+	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/escribirPersonaje.php");
+	xmlhttp.setRequestHeader("Content-Type", "application/json");
+
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+
+			var respuestaJSON = JSON.parse(this.responseText);
+
+			if(respuestaJSON["estado"] == "ok"){
+
+				alert("INSERTADO CORRECTAMENTE. ID: " + respuestaJSON["lastId"] );
+btnInsert = document.getElementById("boton2").disabled=false;
+location.reload();
+
+			}else{
+				alert(respuestaJSON["mensaje"]);
+			}
+		}else{
+			console.log(this.readyState + " " + this.status);
+			if (this.readyState == 4 && this.status == 404) {
+				alert("URL INCORRECTA");
+
+			}
+		}
+	};
+
+//////////////////////////////////
 
 function borrarColega(){
 
