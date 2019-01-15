@@ -305,21 +305,21 @@ location.reload();
 
 //////////////////////////////////
 
-function borrarColega(){
+function borrarPersonaje(){
 
-	var jugador = {};
+	var personaje = {};
 
-	var btnDelete = document.getElementById("btnDelete").value;
-	jugador.nombre = document.getElementById("nombreColega").value;
-	jugador.numero = document.getElementById("numeroColega").value;
-	jugador.equipo = document.getElementById("equipoColega").value;
-  btnDelete = document.getElementById("btnDelete").disabled=true;
-	console.log(jugador);
+	var btnDelete = document.getElementById("boton3").value;
+	personaje.id = document.getElementById("idPersonaje").value;
+	personaje.nombreP = document.getElementById("nombrePersonaje").value;
+	personaje.idGame = document.getElementById("comparacionPersonaje").value;
+  btnDelete = document.getElementById("boton3").disabled=true;
+	console.log(personaje);
 
 	var peticion = {};
 
 	peticion.peticion = "del";
-	peticion.jugadorBorrar = jugador;
+	peticion.personajeBorrar = personaje;
 
 	console.log(peticion);
 
@@ -328,7 +328,7 @@ function borrarColega(){
 	console.log(peticionJSON);
 
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
-	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/borrarJugador.php");
+	xmlhttp.open("POST", "http://localhost/AD_UD3_A03_Cliente_JS/borrarPersonaje.php");
 	xmlhttp.setRequestHeader("Content-Type", "application/json");
 
 	xmlhttp.onreadystatechange = function() {
@@ -339,7 +339,7 @@ function borrarColega(){
 			if(respuestaJSON["estado"] == "ok"){
 
 				alert("Borrado CORRECTAMENTE. ID: " + respuestaJSON["lastId"] );
-btnDelete = document.getElementById("btnDelete").disabled=false;
+btnDelete = document.getElementById("boton3").disabled=false;
 location.reload();
 
 			}else{
