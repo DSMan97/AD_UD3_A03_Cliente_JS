@@ -28,15 +28,15 @@ function borraHijos(elemento){
 	var hijos = elemento.childNodes;
 
 	//alert(hijos.length);
-	for(var i=0; i < hijos.length ; i++){
-		elemento.removeChild(hijos[i]);
+	while(elemento.hasChildNodes()){
+		elemento.removeChild(hijos[0]);
 	}
 
 }
 
 function mostrarPersonajes(){
 
-	var capa = document.getElementById("principal");
+	var capa = document.getElementById("principal2");
 
 borraHijos(capa);
 
@@ -88,34 +88,36 @@ function pintaTablaVideojuegos(respuesta){
 	if(respuestaJSON["estado"] == "ok"){
 		console.log("VAMOS BIEN");
 
-		var arrPersonajes =  respuestaJSON["videojuegos"];//CONECTA CON LINEA 43 $arrMensaje (DEBAJO DE estado)
+		var arrVideojuegos =  respuestaJSON["videojuegos"];//CONECTA CON LINEA 43 $arrMensaje (DEBAJO DE estado)
 
-		for(var i = 0; i < arrPersonajes.length; i++){
+		for(var i = 0; i < arrVideojuegos.length; i++){
 
 			var fila = document.createElement("div");
-			fila.setAttribute("id","jugador_"+ arrPersonajes[i].id );
+			fila.setAttribute("id","jugador_"+ arrVideojuegos[i].id );
 			fila.setAttribute("class","jugador");
-			fila.setAttribute("onclick","prueba(this)");
+			fila.setAttribute("onclick","getterVideojuego(this)");
 
 			var nombre = document.createElement("h2");
-			var texto = document.createTextNode(arrPersonajes[i].nombre);
+			var texto = document.createTextNode("Nombre: "+ arrVideojuegos[i].nombre);
+
 			nombre.appendChild(texto);
-			nombre.setAttribute("id","nombrejugador_"+ arrPersonajes[i].id );
+			nombre.setAttribute("id","nombre"+ arrVideojuegos[i].id );
 
 			var fecha = document.createElement("h2");
-			var textonum = document.createTextNode(arrPersonajes[i].fecha_lanzamiento);
+			var textonum = document.createTextNode("Fecha de Lanzamiento: "+ arrVideojuegos[i].fecha_lanzamiento);
 			fecha.appendChild(textonum);
-			fecha.setAttribute("id","numerojugador_"+ arrPersonajes[i].id );
+			fecha.setAttribute("id","fecha"+ arrVideojuegos[i].id );
 
 			var desarrollador = document.createElement("h2");
-			var textoequipo = document.createTextNode(arrPersonajes[i].desarrollador);
+			var textoequipo = document.createTextNode("Desarrollador: "+arrVideojuegos[i].desarrollador);
 			desarrollador.appendChild(textoequipo);
-			desarrollador.setAttribute("id","equipojugador_"+ arrPersonajes[i].id );
+			desarrollador.setAttribute("id","desarrollador"+ arrVideojuegos[i].id );
 
 			var plataforma = document.createElement("h2");
-			var textoequipo = document.createTextNode(arrPersonajes[i].plataforma);
+			var textoequipo = document.createTextNode("Plataforma: "+arrVideojuegos[i].plataforma);
 			plataforma.appendChild(textoequipo);
-			plataforma.setAttribute("id","equipojugador_"+ arrPersonajes[i].id );
+			plataforma.setAttribute("id","plataforma"+ arrVideojuegos[i].id );
+
 
 			fila.appendChild(nombre);
 			fila.appendChild(fecha);
@@ -124,20 +126,52 @@ function pintaTablaVideojuegos(respuesta){
 
 
 			capa.appendChild(fila);
+
 		}
 
 	}else{
 		console.log("VAMOS MAL");
 	}
 
+}
 
 
+function getterVideojuego(elemento){
+
+	id = elemento.id;
+
+	pos = id.indexOf("_");
+
+	tam = id.length
+
+	idjugador = id.substring(pos+1,tam);
+
+	console.log(elemento.id)
+
+
+
+	nombre = document.getElementById("nombre" + idjugador).innerHTML;
+	nombre = nombre.substring(nombre.indexOf(" ") + 1, nombre.length)
+	fecha = document.getElementById("fecha" + idjugador).innerHTML;
+	fecha = fecha.substring(fecha.indexOf(":") + 2, fecha.length)
+	desarrollador = document.getElementById("desarrollador" + idjugador).innerHTML;
+	desarrollador = desarrollador.substring(desarrollador.indexOf(" ") + 1, desarrollador.length)
+	plataforma = document.getElementById("plataforma" + idjugador).innerHTML;
+	plataforma = plataforma.substring(plataforma.indexOf(" ") + 1, plataforma.length)
+
+	console.log(nombre + " " + fecha);
+
+	document.getElementById("idVideojuego").value = idjugador
+	document.getElementById("nombreVideojuego").value = nombre;
+	document.getElementById("fechaVideojuego").value = fecha;
+	document.getElementById("desarrolloVideojuego").value = desarrollador;
+  document.getElementById("plataformaVideojuego").value = plataforma;
 }
 function pintaTablaPersonajes(respuesta){
 
 	var respuestaJSON = JSON.parse(respuesta);
 
-	var capa = document.getElementById("principal");
+	var capa = document.getElementById("principal2");
 
 	if(respuestaJSON["estado"] == "ok"){
 		console.log("VAMOS BIEN");
@@ -149,17 +183,17 @@ function pintaTablaPersonajes(respuesta){
 			var fila = document.createElement("div");
 			fila.setAttribute("id","jugador_"+ arrPersonajes[i].id );
 			fila.setAttribute("class","jugador");
-			fila.setAttribute("onclick","prueba(this)");
+			fila.setAttribute("onclick","getterPersonaje(this)");
 
 			var nombre = document.createElement("h2");
-			var texto = document.createTextNode(arrPersonajes[i].nombre);
+			var texto = document.createTextNode("Nombre: "+arrPersonajes[i].nombre);
 			nombre.appendChild(texto);
-			nombre.setAttribute("id","nombrejugador_"+ arrPersonajes[i].id );
+			nombre.setAttribute("id","nombreP"+ arrPersonajes[i].id );
 
 			var numero = document.createElement("h2");
-			var textonum = document.createTextNode(arrPersonajes[i].id_juego);
+			var textonum = document.createTextNode("ID del Juego: "+arrPersonajes[i].id_juego);
 			numero.appendChild(textonum);
-			numero.setAttribute("id","numerojugador_"+ arrPersonajes[i].id );
+			numero.setAttribute("id","idjuego"+ arrPersonajes[i].id );
 
 
 			fila.appendChild(nombre);
@@ -167,6 +201,7 @@ function pintaTablaPersonajes(respuesta){
 
 
 			capa.appendChild(fila);
+
 		}
 
 	}else{
@@ -177,7 +212,9 @@ function pintaTablaPersonajes(respuesta){
 
 }
 
-function prueba(elemento){
+
+
+function getterPersonaje(elemento){
 
 	id = elemento.id;
 
@@ -187,13 +224,17 @@ function prueba(elemento){
 
 	idjugador = id.substring(pos+1,tam);
 
-	nombre = document.getElementById("nombrejugador_" + idjugador).innerHTML;
-	numero = document.getElementById("numerojugador_" + idjugador).innerHTML;
-	equipo = document.getElementById("equipojugador_" + idjugador).innerHTML;
+	console.log(elemento.id)
 
-	document.getElementById("nombreColega").value = nombre;
-	document.getElementById("numeroColega").value = numero;
-	document.getElementById("equipoColega").value = equipo;
+	nombre = document.getElementById("nombreP" + idjugador).innerHTML;
+		nombre = nombre.substring(nombre.indexOf(" ") + 1, nombre.length)
+	idjuego = document.getElementById("idjuego" + idjugador).innerHTML;
+		idjuego = idjuego.substring(idjuego.indexOf(":") + 1, idjuego.length)
+
+
+	document.getElementById("idPersonaje").value = idjugador;
+	document.getElementById("nombrePersonaje").value = nombre;
+	document.getElementById("idJuego_Personaje").value = idjuego;
 
 }
 
@@ -235,7 +276,7 @@ function insertarVideojuego(){
 
 				alert("INSERTADO CORRECTAMENTE.");
 btnInsert = document.getElementById("btnInsert").disabled=false;
-location.reload();
+
 
 			}else{
 				alert(respuestaJSON["mensaje"]);
@@ -291,7 +332,7 @@ function insertarPersonaje(){
 
 				alert("INSERTADO CORRECTAMENTE.");
 btnInsert = document.getElementById("btnInsert").disabled=false;
-location.reload();
+
 
 			}else{
 				alert(respuestaJSON["mensaje"]);
@@ -348,7 +389,7 @@ function updateVideojuego(){
 
 				alert("ACTUALIZADO CORRECTAMENTE.");
 btnInsert = document.getElementById("btnInsert").disabled=false;
-location.reload();
+
 
 			}else{
 				alert(respuestaJSON["mensaje"]);
@@ -401,7 +442,7 @@ function updatePersonaje(){
 
 				alert("Actualizado CORRECTAMENTE.");
 btnInsert = document.getElementById("btnInsert").disabled=false;
-location.reload();
+
 
 			}else{
 				alert(respuestaJSON["mensaje"]);
@@ -459,7 +500,7 @@ function borrarVideojuego(){
 
 				alert("Borrado CORRECTAMENTE. "  );
 				btnDelete = document.getElementById("btnDelete").disabled=false;
-				location.reload();
+
 
 			}else{
 				alert(respuestaJSON["mensaje"]);
@@ -517,7 +558,7 @@ function borrarPersonaje(){
 
 				alert("Borrado CORRECTAMENTE. "  );
 				btnDelete = document.getElementById("boton3").disabled=false;
-				location.reload();
+
 
 			}else{
 				alert(respuestaJSON["mensaje"]);
