@@ -35,7 +35,6 @@ if (isset ( $result ) && $result) { // Si pasa por este if, la query está está
 
 			// Por último, añadimos el nuevo jugador al array de jugadores
 			$arrVideojuegos[] = $arrVideojuego;
-
 		}
 
 		// Añadimos al $arrMensaje el array de jugadores y añadimos un campo para indicar que todo ha ido OK

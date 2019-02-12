@@ -32,8 +32,8 @@ if(isset($parameters)){
 		$desarrollo = $videojuego["desarrollador"];
 		$plataforma = $videojuego["plataforma"];
 
-		$query  = "DELETE FROM videojuegos WHERE ID=$id AND Nombre=$nombre AND Fecha_Lanzamiento=$lanzamiento AND Desarrollador=$desarrollo AND Plataforma=$plataforma";
-
+	$query  = "DELETE FROM videojuegos where ID=$id";
+	
 		$result = $conn->query ( $query );
 
 		if (isset ( $result ) && $result) { // Si pasa por este if, la query está está bien y se ha insertado correctamente

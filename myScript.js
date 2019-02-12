@@ -303,7 +303,7 @@ function insertarPersonaje(){
 	var btnInsert = document.getElementById("boton2").value;
 	personaje.nombre = document.getElementById("nombrePersonaje").value;
 	personaje.id = document.getElementById("idPersonaje").value;
-	personaje.id_juego = document.getElementById("comparacionPersonaje").value;
+	personaje.id_juego = document.getElementById("idJuego_Personaje").value;
   btnInsert = document.getElementById("boton2").disabled=true;
 	console.log(personaje);
 
@@ -413,7 +413,7 @@ function updatePersonaje(){
 	var btnInsert = document.getElementById("boton2").value;
 	personaje.nombre = document.getElementById("nombrePersonaje").value;
 	personaje.id = document.getElementById("idPersonaje").value;
-	personaje.id_juego = document.getElementById("comparacionPersonaje").value;
+	personaje.id_juego = document.getElementById("idJuego_Personaje").value;
   btnInsert = document.getElementById("boton2").disabled=true;
 	console.log(personaje);
 
@@ -529,7 +529,7 @@ function borrarPersonaje(){
 	var btnDelete = document.getElementById("boton3").value;
 	personaje.nombre = document.getElementById("nombrePersonaje").value;
 	personaje.id = document.getElementById("idPersonaje").value;
-	personaje.id_juego = document.getElementById("comparacionPersonaje").value;
+	personaje.id_juego = document.getElementById("idJuego_Personaje").value;
   btnDelete = document.getElementById("boton3").disabled=true;
 	console.log(personaje);
 
